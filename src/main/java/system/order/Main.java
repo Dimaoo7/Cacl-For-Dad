@@ -28,25 +28,29 @@ public class Main {
     public static void calcWall() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Ширина стены: ");
+        System.out.print("Ширина стены в см: ");
         float wallQuestion = scanner.nextFloat() * 2;
 
         System.out.print("Сколько метров хотите?: ");
-        float meter = scanner.nextFloat() * wallQuestion;
+        int meter = (int) (scanner.nextFloat() * wallQuestion);
 
-        if (meter < 200) {
-            System.out.println("Вышло меньше 200е минимум 200 для выезда");
-        } else {
-            System.out.println("Цена будет "+ meter);
-            System.out.print("Хотите скидку?: ");
+        scanner.nextLine();
+
+        if (meter > 200) {
+            System.out.print("Хотите скидку? (y/n): ");
             String choose = scanner.nextLine().trim().toLowerCase();
             if (choose.equals("y")) {
-                System.out.println("Сколько процентов?: ");
+                System.out.print("Сколько процентов?: ");
                 int numOfPercent = scanner.nextInt();
-                float percent = meter;
+                float discount = (float) (meter * numOfPercent) / 100;
+                int priceWithDiscount = (int) (meter - discount);
+                System.out.println("Цена будет " + meter + "e, а со скидкой " + priceWithDiscount + "e");
+            } else {
+                System.out.println("Цена будет " + meter + "e");
             }
+        } else {
+            System.out.println("Вышло меньше 200e, нужно минимум 200e для выезда.");
         }
-
-
     }
+
 }
