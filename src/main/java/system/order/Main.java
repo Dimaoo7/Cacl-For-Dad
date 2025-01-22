@@ -12,12 +12,13 @@ public class Main {
             System.out.print("Введите цифру 1.Резание 2.Бурение: ");
             int choice = scanner.nextInt();
             if (choice == 1) {
-                calcRez();
+                calcRez(scanner);
             } else {
-                calcBur();
+                calcBur(scanner);
             }
 
             System.out.println("Хотите выполнить программу снова? (y/n): ");
+            scanner.nextLine();
             String userInput = scanner.nextLine().trim().toLowerCase();
 
             if (!userInput.equals("y")) {
@@ -25,12 +26,10 @@ public class Main {
             }
         }
         System.out.println("Программа завершена ");
-        scanner.close();
     }
 
 
-    public static void calcRez() {
-        Scanner scanner = new Scanner(System.in);
+    public static void calcRez(Scanner scanner) {
 
         System.out.print("Ширина стены в см: ");
         float wallQuestion = scanner.nextFloat() * 2;
@@ -50,157 +49,49 @@ public class Main {
                 int priceWithDiscount = (int) (meter - discount);
                 System.out.println("Цена будет " + meter + "e, а со скидкой " + priceWithDiscount + "e");
             } else {
-                System.out.println("Цена будет " + meter + "e");
+                System.out.printf("Цена будет %.2fе%n", (double) meter);
+
             }
         } else {
             System.out.println("Вышло "+ meter+" ,а нужно минимум 200e для выезда.");
         }
     }
 
-    public static void calcBur() {
-        Scanner scanner = new Scanner(System.in);
+    public static void calcBur(Scanner scanner) {
+        System.out.println("""
+                Самое популярное:
+                - 110: вентиляция в ванной комнате
+                - 120: дымоход
+                - 130: вытяжка
+                """);
 
-        System.out.println("Самое популярное " +
-                "110 za ventilaciju u kupatilo," +
-                "120 dimnjak," +
-                " 130 aspirator");
-
-        double cm;
-        double result;
         System.out.print("Какой фи? 1метр 100см: ");
         int fi = scanner.nextInt();
         switch (fi) {
-            case 50, 60, 70, 80 -> {
-                System.out.println("1.25e cm");
-                System.out.print("Сколько см нужно?: ");
-                double price = 1.25;
-                cm = scanner.nextFloat();
-                result = cm * price;
-                if (result > 500) {
-                    double discount = (result * 10) / 100;
-                    int priceWithDiscount = (int) (result - discount);
-                    System.out.println(result + "е это большой проект скидка будет 10 процентов" + priceWithDiscount + "e ");
-                }else System.out.println("Вышло " + result + "e ");
-            }
-            case 100 -> {
-                System.out.println("2.5e cm");
-                System.out.print("Сколько см нужно?: ");
-                cm = scanner.nextFloat();
-                result = cm * 2.5f;
-                if (result > 500) {
-                    double discount = (result * 10) / 100;
-                    int priceWithDiscount = (int) (result - discount);
-                    System.out.println(result + "е это большой проект скидка будет 10 процентов" + priceWithDiscount + "e ");
-                }else System.out.println("Вышло " + result + "e ");
-            }
-            case 110 -> {
-                System.out.println("2.75e cm");
-                System.out.print("Сколько см нужно?: ");
-                cm = scanner.nextFloat();
-                result = cm * 2.75f;
-                if (result > 500) {
-                    double discount = (result * 10) / 100;
-                    int priceWithDiscount = (int) (result - discount);
-                    System.out.println(result + "е это большой проект скидка будет 10 процентов" + priceWithDiscount + "e ");
-                }else System.out.println("Вышло " + result + "e ");
-            }
-            case 120 -> {
-                System.out.println("3e cm");
-                System.out.print("Сколько см нужно?: ");
-                cm = scanner.nextFloat();
-                result = cm * 3f;
-                if (result > 500) {
-                    double discount = (result * 10) / 100;
-                    int priceWithDiscount = (int) (result - discount);
-                    System.out.println(result + "е это большой проект скидка будет 10 процентов" + priceWithDiscount + "e ");
-                }else System.out.println("Вышло " + result + "e ");
-            }
-            case 130 -> {
-                System.out.println("3.25e cm");
-                System.out.print("Сколько см нужно?: ");
-                cm = scanner.nextFloat();
-                result = cm * 3.25f;
-                if (result > 500) {
-                    double discount = (result * 10) / 100;
-                    int priceWithDiscount = (int) (result - discount);
-                    System.out.println(result + "е это большой проект скидка будет 10 процентов" + priceWithDiscount + "e ");
-                }else System.out.println("Вышло " + result + "e ");
-            }
-            case 160 -> {
-                System.out.println("4e cm");
-                System.out.print("Сколько см нужно?: ");
-                cm = scanner.nextFloat();
-                result = cm * 4f;
-                if (result > 500) {
-                    double discount = (result * 10) / 100;
-                    int priceWithDiscount = (int) (result - discount);
-                    System.out.println(result + "е это большой проект скидка будет 10 процентов" + priceWithDiscount + "e ");
-                }else System.out.println("Вышло " + result + "e ");
-            }
-            case 180 -> {
-                System.out.println("4.5e cm");
-                System.out.print("Сколько см нужно?: ");
-                cm = scanner.nextFloat();
-                result = cm * 4.5f;
-                if (result > 500) {
-                    double discount = (result * 10) / 100;
-                    int priceWithDiscount = (int) (result - discount);
-                    System.out.println(result + "е это большой проект скидка будет 10 процентов" + priceWithDiscount + "e ");
-                }else System.out.println("Вышло " + result + "e ");
-            }
-            case 200 -> {
-                System.out.println("5e cm");
-                System.out.print("Сколько см нужно?: ");
-                cm = scanner.nextFloat();
-                result = cm * 5f;
-                if (result > 500) {
-                    double discount = (result * 10) / 100;
-                    int priceWithDiscount = (int) (result - discount);
-                    System.out.println(result + "е это большой проект скидка будет 10 процентов" + priceWithDiscount + "e ");
-                }else System.out.println("Вышло " + result + "e ");
-            }
-            case 250 -> {
-                System.out.println("6.25e cm");
-                System.out.print("Сколько см нужно?: ");
-                cm = scanner.nextFloat();
-                result = cm * 6.25f;
-                if (result > 500) {
-                    double discount = (result * 10) / 100;
-                    int priceWithDiscount = (int) (result - discount);
-                    System.out.println(result + "е это большой проект скидка будет 10 процентов" + priceWithDiscount + "e ");
-                }else System.out.println("Вышло " + result + "e ");
-            }
-            case 300 -> {
-                System.out.println("7.5e cm");
-                System.out.print("Сколько см нужно?: ");
-                cm = scanner.nextFloat();
-                result = cm * 7.5f;
-                if (result > 500) {
-                    double discount = (result * 10) / 100;
-                    int priceWithDiscount = (int) (result - discount);
-                    System.out.println(result + "е это большой проект скидка будет 10 процентов" + priceWithDiscount + "e ");
-                }else System.out.println("Вышло " + result + "e ");
-            }
-            case 350 -> {
-                System.out.println("8.75e cm");
-                System.out.print("Сколько см нужно?: ");
-                cm = scanner.nextFloat();
-                result = cm * 8.75f;
-                if (result > 500) {
-                    double discount = (result * 10) / 100;
-                    int priceWithDiscount = (int) (result - discount);
-                    System.out.println(result + "е это большой проект скидка будет 10 процентов" + priceWithDiscount + "e ");
-                }else System.out.println("Вышло " + result + "e ");
-            }
+            case 50, 60, 70, 80 -> easierWay(1.25, scanner);
+            case 100 -> easierWay(2.5, scanner);
+            case 110 -> easierWay(2.75, scanner);
+            case 120 -> easierWay(3, scanner);
+            case 130 -> easierWay(3.25, scanner);
+            case 160 -> easierWay(4, scanner);
+            case 180 -> easierWay(4.5, scanner);
+            case 200 -> easierWay(5, scanner);
+            case 250 -> easierWay(6.25, scanner);
+            case 300 -> easierWay(7.5, scanner);
+            case 350 -> easierWay(8.75, scanner);
             default -> System.out.println("Похоже вы указали неверное число");
-
-
-
         }
     }
 
-    private static void extracted(float result) {
-        System.out.println(result + "е это большой проект скидка будет 10 процентов");
+    public static void easierWay(double price, Scanner scanner ) {
+        System.out.printf("%.2fе см%n", price);
+        System.out.print("Сколько см нужно?: ");
+        double cm = scanner.nextDouble();
+        double result = cm * price;
+        if (result > 500) {
+            double discount = (result * 10) / 100;
+            double priceWithDiscount = result - discount;
+            System.out.printf("%.2fе это большой проект, скидка будет 10 процентов: %.2fе%n", result, priceWithDiscount);
+        }else System.out.printf("Вышло: %.2fе%n", result);
     }
-
 }
